@@ -36,24 +36,7 @@ var conversation = new Conversation({
   'version_date': '2017-05-26'
 });
 
-//youtube Data Api
 
-const google = require('googleapis');
-const sampleClient = require('./sampleclient');
-var resultarr = [];
-
-// initialize the Youtube API library
-const youtube = google.youtube({
-  version: 'v3',
-   auth: sampleClient.oAuth2Client
-});
-
-const scopes = ['https://www.googleapis.com/auth/youtube'];
-
-sampleClient.authenticate(scopes, err => {
-  if (err) {
-       return res.json({
-      'output': {
 
 
 //End point for getting Youtube Info
