@@ -45,7 +45,7 @@ var resultarr = [];
 // initialize the Youtube API library
 const youtube = google.youtube({
   version: 'v3',
-  key: 'AIzaSyDiscLQ1zUcmrlLZh4QfVxYez_0qawkezY'
+   auth: sampleClient.oAuth2Client
 });
 
 const scopes = ['https://www.googleapis.com/auth/youtube'];
@@ -54,40 +54,6 @@ sampleClient.authenticate(scopes, err => {
   if (err) {
        return res.json({
       'output': {
-        'text': 'Error authenticating youtube api '
-      }
-	})
- }
-});
-//// youtube till here
-
-//// Endpoint to be call from the client side
-app.post('/api/playlist', function(req, res) {
-  
- 	
-youtube.search.list({
-	    part: 'id,snippet',
-	    q: req.body.q || {},
-	    maxResults: '10'	  
-	  }, (err, data) => {
-		  if (err) {
-			console.log('in err')
-    			return res.status(err.code||400).json(err);
-			 //return err;
-			    }
-		  console.log('no error in api')
-		  console.log('data' , data)
-		  for (var i = 0 ; i < data.data.items.length; i++)
-	       		{  //console.log('b4 2nd loop ', data.data.items[i].id.videoId, " Tittle: ", data.data.items[i].snippet.title, "Thumbnails:", data.data.items[i].snippet.thumbnails);
-		          if (data.data.items[i].id.videoId){		
-				  resultarr.push({videoid: data.data.items[i].id.videoId, Title: data.data.items[i].snippet.title, url: "www.youtube.com/watch?v="+data.data.items[i].id.videoId, Thumbnail: "https://i1.ytimg.com/vi/"+data.data.items[i].id.videoId+"/mqdefault.jpg"});
-			  }	
-		       }		
-		return res.status(status).send(json(resultarr));
-		//  return ();
-		});
-
-});
 
 
 //End point for getting Youtube Info
@@ -103,8 +69,7 @@ var options = {
 		return cheerio.load(body);
 	}
 }
-var watchurl, tittle
-//const  json={title: "", url: "", thumbnailurl: "", videoid:""}
+
 const  json=[]
 request(options)
 	.then (function ($){
@@ -274,37 +239,7 @@ fetch('http://localhost:5000/api/message', {
 		});
 });
 
-//youtube data api - to test end point - to be removed
-app.get('/playsong', function(req,res){
 
-var fetch = require('node-fetch');
-
-fetch('http://localhost:5000/api/playlist', {
-    method: 'POST',
-    body: JSON.stringify({
-      q: 'main kaun hoon'
-    }),
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8"
-    }
-  })
-.then(function(response){
-    return response.json();
-})
-.then(function(AuthJson){
-	 var postcnt = 0;
-	 var AuthHolder = ''
-		  for ( var i = 0; i < AuthJson.length; i++)
-		            
-		      {     AuthHolder = AuthHolder + 'Title:  '+ AuthJson[i].title+  '   url :'+ AuthJson[i].url +'<br>';
-			    //console.log("authholder", AuthHolder)
-			    
-		//	    postcnt = 0;  
-		      }
-		      //res.send(AuthJson)
-	               res.send(AuthHolder)
-		});
-});
 
 
 module.exports = app;
