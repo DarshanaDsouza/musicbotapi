@@ -4,25 +4,18 @@
   "description": "To install",
   "main": "watsonconv/server.js",
   "dependencies": {
-    "async": "2.6.0",
     "body-parser": "^1.18.2",
-    "cheerio": "^1.0.0-rc.2",
     "dotenv": "^2.0.0",
     "express": "^4.16.1",
-    "google-auth-library": "^1.0.0",
-    "googleapi": "^1.0.2",
-    "googleapis": "^25.0.0",
-    "npm": "^5.6.0",
-    "prompt-sync": "^4.1.5",
-    "qs": "^6.5.1",
-    "query-string": "^5.1.0",
-    "querystring": "^0.2.0",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "string-template": "1.0.0",
-    "uuid": "^3.1.0",
     "watson-developer-cloud": "^2.40.0",
-    "youtube-dl": "^1.12.2"
+    "googleapis": "^25.0.0",
+    "prompt-sync": "^4.1.5",
+    "async": "2.6.0",
+    "google-auth-library": "^1.0.0",
+    "qs": "^6.5.1",
+    "request": "^2.83.0",
+    "string-template": "1.0.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
@@ -68,7 +61,7 @@
     "npm": "> 3.10.x"
   },
   "scripts": {
-    "test": "mocha"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

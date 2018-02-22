@@ -1,11 +1,15 @@
-var express = require('express');
-var app = express();
+#!/usr/bin/env
 
-//your routes here
-app.get('/', function (req, res) {
-    res.send("Hello World!");
-});
+ 
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+'use strict';
+
+require('dotenv').config({silent: true});
+
+var server = require('./app');
+var port = process.env.PORT || process.env.VCAP_APP_PORT || 5000;
+
+server.listen(port, function() {
+  // eslint-disable-next-line
+  console.log('Server running on port: %d', port);
 });
