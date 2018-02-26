@@ -1,0 +1,8 @@
+
+# Youtube data - searchbot
+
+RUN cd youtubebot; npm install; cd ..; npm install googleapis; cd youtubebot/youtube
+
+CMD ["node", "searchbotprompt.js"]
+
+
