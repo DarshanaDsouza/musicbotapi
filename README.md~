@@ -9,6 +9,7 @@ npm install
 
 npm start
 
+It will ask you to authenticate google.api, select your google account and allow HPDFMusicBot to access youtube
 
 End points for Watson conversation and youtube - app.js
 
